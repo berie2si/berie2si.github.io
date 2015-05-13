@@ -421,7 +421,7 @@ var resizePizzas = function(size) {
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldwidth = elem.offsetWidth;
-    var windowwidth = document.getElementById("#randomPizzas").offsetWidth;
+    var windowwidth = document.getElementById("randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
 
     // TODO: change to 3 sizes? no more xl?
@@ -449,7 +449,7 @@ var resizePizzas = function(size) {
   function changePizzaSizes(size) {
   // caching - moving out of loop 
     var randCont;
-    randCont = document.getElementByClassName("randomPizzaContainer");
+    randCont = document.getElementsByClassName("randomPizzaContainer");
     var dx = determineDx(randCont[0], size);
     var newwidth = (randCont[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < randCont.length; i++) {
@@ -534,15 +534,16 @@ document.addEventListener('DOMContentLoaded', function() {
   cols = Math.ceil(window.innerWidth / (256 - 73)); 
   rows = Math.ceil(window.innerHeight / 256);
   ttlpizzas = cols * rows;
+  var elem;
   for (var i = 0; i < ttlpizzas; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
